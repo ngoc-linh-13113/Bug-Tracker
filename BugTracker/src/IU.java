@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JLayeredPane;
 import javax.swing.JLabel;
 import java.awt.CardLayout;
@@ -18,12 +19,12 @@ public class IU {
 	private JFrame frame;
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private JTextField adUserField;
-	private JTextField adPassField;
+	private JPasswordField adPassField;
 	private JTextField staffUserField;
-	private JTextField staffPassField;
+	private JPasswordField staffPassField;
 	private JTextField userUserField;
-	private JTextField userPassField;
-
+	private JPasswordField userPassField;
+	private UserGUI uGUI;
 	/**
 	 * Launch the application.
 	 */
@@ -51,6 +52,7 @@ public class IU {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		inItComponent();
 		
 		}
@@ -63,6 +65,7 @@ public class IU {
 	private void inItComponent() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 550, 400);
+		frame.setTitle("BugTracker");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		layeredPane.setBounds(10, 67, 514, 283);
@@ -94,7 +97,7 @@ public class IU {
 		adminPanel.add(adUserField);
 		adUserField.setColumns(10);
 		
-		adPassField = new JTextField();
+		adPassField = new JPasswordField();
 		adPassField.setBounds(157, 120, 258, 20);
 		adminPanel.add(adPassField);
 		adPassField.setColumns(10);
@@ -128,7 +131,7 @@ public class IU {
 		staffUserField.setBounds(157, 70, 258, 20);
 		staffPanel.add(staffUserField);
 		
-		staffPassField = new JTextField();
+		staffPassField = new JPasswordField();
 		staffPassField.setColumns(10);
 		staffPassField.setBounds(157, 120, 258, 20);
 		staffPanel.add(staffPassField);
@@ -162,7 +165,7 @@ public class IU {
 		userUserField.setBounds(157, 70, 258, 20);
 		userPanel.add(userUserField);
 		
-		userPassField = new JTextField();
+		userPassField = new JPasswordField();
 		userPassField.setColumns(10);
 		userPassField.setBounds(157, 120, 258, 20);
 		userPanel.add(userPassField);
@@ -170,6 +173,14 @@ public class IU {
 		JButton userLogbutt = new JButton("Login");
 		userLogbutt.setBounds(216, 171, 89, 23);
 		userPanel.add(userLogbutt);
+		userLogbutt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(userUserField.getText().equals("User") && userPassField.getText().equals("123") ) {
+					uGUI = new UserGUI();
+					
+				}
+			}
+		});
 		
 		JButton staffButton = new JButton("Staff");
 		staffButton.setBounds(209, 11, 106, 42);
@@ -198,4 +209,6 @@ public class IU {
 		});
 		frame.getContentPane().add(userButton);
 	}
+
+
 }
