@@ -25,6 +25,8 @@ public class IU {
 	private JTextField userUserField;
 	private JPasswordField userPassField;
 	private UserGUI uGUI;
+	private StaffGUI staff;
+	private AdminGUI admin;
 	/**
 	 * Launch the application.
 	 */
@@ -105,6 +107,14 @@ public class IU {
 		JButton adLogButt = new JButton("Login");
 		adLogButt.setBounds(216, 171, 89, 23);
 		adminPanel.add(adLogButt);
+		adLogButt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(adUserField.getText().equals("Luan") && adPassField.getText().equals("123") ) {
+					admin = new AdminGUI();
+					
+				}
+			}
+		});
 		
 		JPanel staffPanel = new JPanel();
 		staffPanel.setLayout(null);
@@ -139,6 +149,15 @@ public class IU {
 		JButton staffLogButt = new JButton("Login");
 		staffLogButt.setBounds(216, 171, 89, 23);
 		staffPanel.add(staffLogButt);
+		staffLogButt.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(staffUserField.getText().equals("Nam") && staffPassField.getText().equals("123")) {
+					staff = new StaffGUI();
+				}
+			}
+		});
 		
 		JPanel userPanel = new JPanel();
 		userPanel.setLayout(null);
